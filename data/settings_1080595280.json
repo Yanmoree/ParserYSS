@@ -1,0 +1,13 @@
+{
+  "maxAgeMinutes": 0,
+  "minPrice": 500,
+  "maxPages": 3,
+  "enabledPlatforms": [
+    "avito",
+    "goofish",
+    "mercari"
+  ],
+  "maxPrice": 30000,
+  "userId": 1080595280,
+  "checkIntervalSeconds": 25
+}
