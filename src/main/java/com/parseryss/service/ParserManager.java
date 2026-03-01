@@ -52,8 +52,9 @@ public class ParserManager {
         int threads = Runtime.getRuntime().availableProcessors();
         this.executorService = Executors.newFixedThreadPool(threads);
         
-        // Планировщик для периодических задач
-        this.scheduler = Executors.newScheduledThreadPool(threads);
+        // Планировщик для периодических задач (минимум 10 потоков для параллельного парсинга)
+        int schedulerThreads = Math.max(10, threads);
+        this.scheduler = Executors.newScheduledThreadPool(schedulerThreads);
         
         this.activeParsingTasks = new ConcurrentHashMap<>();
         
