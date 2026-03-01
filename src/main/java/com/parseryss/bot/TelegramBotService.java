@@ -23,8 +23,8 @@ import java.util.List;
 public class TelegramBotService extends TelegramLongPollingBot {
     private static final Logger logger = LoggerFactory.getLogger(TelegramBotService.class);
     
-    private static final String BOT_TOKEN = "8538627254:AAE_niIKdyWgM69JSrto7tKntao5vS7qj5g";
-    private static final String BOT_USERNAME = "multiparse_bot";
+    private static final String BOT_TOKEN = "8291586731:AAFIjnerJdg0IzwSm2JgNkVfrOc0rPyHWW8";
+    private static final String BOT_USERNAME = "yss_parser_bot";
     
     private final UserRepository userRepository;
     private final QueryRepository queryRepository;
