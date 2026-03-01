@@ -21,8 +21,8 @@ mkdir -p data
 mkdir -p logs
 
 echo "✅ Запуск бота..."
-echo "📱 Bot: @yss_parser_bot"
-echo "🔑 Token: 8291586731:AAFIjnerJdg0IzwSm2JgNkVfrOc0rPyHWW8"
+echo "📱 Bot: @multiparse_bot"
+echo "🔑 Token: 8538627254:AAE_niIKdyWgM69JSrto7tKntao5vS7qj5g"
 echo ""
 echo "Для остановки нажмите Ctrl+C"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

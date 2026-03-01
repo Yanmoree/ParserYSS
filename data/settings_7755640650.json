@@ -2,12 +2,8 @@
   "maxAgeMinutes": 0,
   "minPrice": 0,
   "maxPages": 3,
-  "enabledPlatforms": [
-    "avito",
-    "goofish",
-    "mercari"
-  ],
+  "enabledPlatforms": ["avito"],
   "maxPrice": 9.99999999E8,
-  "userId": 6937423668,
+  "userId": 7755640650,
   "checkIntervalSeconds": 25
 }

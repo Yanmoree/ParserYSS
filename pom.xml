@@ -85,6 +85,20 @@
             <version>3.14.0</version>
         </dependency>
 
+        <!-- Apache Commons IO (required for WebDriverManager) -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.15.1</version>
+        </dependency>
+
+        <!-- Apache Commons Compress (required for WebDriverManager) -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-compress</artifactId>
+            <version>1.26.0</version>
+        </dependency>
+
         <!-- ZSTD Compression -->
         <dependency>
             <groupId>com.github.luben</groupId>

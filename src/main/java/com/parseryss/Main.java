@@ -23,9 +23,19 @@ public class Main {
         
         try {
             // Инициализация CookieService для Goofish
-            logger.info("🍪 Инициализация CookieService...");
+            logger.info("🍪 Инициализация CookieService для Goofish...");
             com.parseryss.service.CookieService.initialize();
             logger.info("✅ CookieService инициализирован");
+            
+            // Инициализация AvitoHeaderService
+            logger.info("🍪 Инициализация AvitoHeaderService...");
+            com.parseryss.service.AvitoHeaderService.initialize();
+            logger.info("✅ AvitoHeaderService инициализирован");
+            
+            // Инициализация MercariHeaderService
+            logger.info("🍪 Инициализация MercariHeaderService...");
+            com.parseryss.service.MercariHeaderService.initialize();
+            logger.info("✅ MercariHeaderService инициализирован");
             
             // Инициализация Storage Layer
             logger.info("📦 Инициализация хранилищ...");

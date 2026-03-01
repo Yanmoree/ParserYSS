@@ -1,26 +1,218 @@
 [
   {
-    "createdAt": "2026-02-24T17:17:52.896759",
-    "id": "ed07e846-196c-46cc-bf42-616cbfa9e6ad",
+    "createdAt": "2026-02-24T23:11:29.385454416",
+    "id": "3f36ab2f-318c-4d00-a339-9018368a5a59",
+    "text": "stone island",
+    "userId": 1080595280
+  },
+  {
+    "createdAt": "2026-02-25T07:53:49.678098255",
+    "id": "3031eee0-df02-4787-bac9-d1a2dd76c711",
+    "text": "number nine",
+    "userId": 6937423668
+  },
+  {
+    "createdAt": "2026-02-27T19:44:46.492266729",
+    "id": "ae79b516-544f-4cfc-8714-a0476c189db5",
+    "text": "MCM",
+    "userId": 7755640650
+  },
+  {
+    "createdAt": "2026-02-28T17:33:13.712040883",
+    "id": "66aef427-1a9e-41d1-98b9-5a31ba7585f9",
+    "text": "Affliction",
+    "userId": 7755640650
+  },
+  {
+    "createdAt": "2026-02-24T23:00:57.644366795",
+    "id": "42c844a5-f5ae-45b4-a64b-fe098ba5bd1b",
     "text": "acoldwall",
     "userId": 1080595280
   },
   {
-    "createdAt": "2026-02-24T17:07:41.791893",
-    "id": "661eacac-107a-4947-84a6-f8dd440fbfcc",
+    "createdAt": "2026-02-27T19:44:26.532881594",
+    "id": "593b3445-7de4-4bda-8ec2-ccb94cc6ae99",
+    "text": "Junya Watanabe",
+    "userId": 7755640650
+  },
+  {
+    "createdAt": "2026-02-28T15:53:32.295242344",
+    "id": "70719ffe-19c9-4a8c-be70-d3cf3ff11714",
+    "text": "Goth Money Records",
+    "userId": 7755640650
+  },
+  {
+    "createdAt": "2026-02-28T15:53:49.724472804",
+    "id": "968634b4-42d8-437d-b694-a17f75ca115d",
+    "text": "John Galliano",
+    "userId": 7755640650
+  },
+  {
+    "createdAt": "2026-02-27T19:46:05.211770430",
+    "id": "174cb8b4-916a-4b4d-95a1-2a477df78d59",
+    "text": "Rock revival",
+    "userId": 7755640650
+  },
+  {
+    "createdAt": "2026-02-28T17:32:41.578754614",
+    "id": "bc1cc656-2212-44fe-8819-76408a1c9497",
+    "text": "Philipp Plein",
+    "userId": 7755640650
+  },
+  {
+    "createdAt": "2026-02-24T23:20:21.253298165",
+    "id": "74c84af4-02fc-496d-beaf-f4e9734d8671",
+    "text": "Отдам за отзыв",
+    "userId": 5328022266
+  },
+  {
+    "createdAt": "2026-02-25T07:54:29.070175099",
+    "id": "393a5d15-dbdb-40bb-a505-f21181bafb9d",
+    "text": "cp company",
+    "userId": 6937423668
+  },
+  {
+    "createdAt": "2026-02-25T06:50:13.521104977",
+    "id": "d1d80f6e-ce30-468d-afa8-dbe4ff664d77",
+    "text": "raf simons",
+    "userId": 1080595280
+  },
+  {
+    "createdAt": "2026-02-25T07:55:32.071658645",
+    "id": "4491816e-537f-4ef2-b399-061301898ac5",
+    "text": "dior",
+    "userId": 6937423668
+  },
+  {
+    "createdAt": "2026-02-28T15:54:06.710233052",
+    "id": "fcaf8dac-bf3a-42da-a07f-d83467477b87",
+    "text": "Undercover",
+    "userId": 7755640650
+  },
+  {
+    "createdAt": "2026-02-27T19:43:39.832144468",
+    "id": "e3e07671-be07-4d9a-bf08-9041ddef48f3",
+    "text": "True Religion",
+    "userId": 7755640650
+  },
+  {
+    "createdAt": "2026-02-28T15:53:18.469628040",
+    "id": "fafcddf5-98ab-45be-8d17-5c5d324f2596",
+    "text": "Robin's Jeans",
+    "userId": 7755640650
+  },
+  {
+    "createdAt": "2026-02-27T19:44:07.786474670",
+    "id": "13fa3917-b663-40d3-b128-d677fc5bd841",
+    "text": "Diesel",
+    "userId": 7755640650
+  },
+  {
+    "createdAt": "2026-02-24T23:19:50.838493021",
+    "id": "0630dc11-2fbb-4194-8a31-1190af80b5e1",
+    "text": "Отдам бесплатно",
+    "userId": 5328022266
+  },
+  {
+    "createdAt": "2026-02-27T19:45:30.285841245",
+    "id": "c98d1e54-b2d4-4bd8-a75d-148a84fca001",
+    "text": "Dsquared²",
+    "userId": 7755640650
+  },
+  {
+    "createdAt": "2026-02-25T07:54:49.978827416",
+    "id": "c68f8a67-394c-4085-9071-5e6a71280880",
+    "text": "versace",
+    "userId": 6937423668
+  },
+  {
+    "createdAt": "2026-02-24T23:01:02.600895811",
+    "id": "aae7e83b-7785-4930-8d99-a806493a4fa0",
+    "text": "jeremy scott",
+    "userId": 1080595280
+  },
+  {
+    "createdAt": "2026-02-27T19:43:08.701426673",
+    "id": "9bdc236c-011d-495f-9bd6-1601947e0fd6",
+    "text": "Roberto Cavalli",
+    "userId": 7755640650
+  },
+  {
+    "createdAt": "2026-02-27T19:43:29.035288029",
+    "id": "4912a413-b95b-4d28-b042-875c85fb7b36",
+    "text": "Just Cavalli",
+    "userId": 7755640650
+  },
+  {
+    "createdAt": "2026-02-24T23:11:17.602363376",
+    "id": "04fbb1d6-4641-4434-9d78-92068083f19a",
     "text": "cav empt",
-    "userId": 6937423668
+    "userId": 1080595280
   },
   {
-    "createdAt": "2026-02-23T15:46:32.649965",
-    "id": "a6a46848-e363-4073-aa22-532e10b2e395",
-    "text": "stone island",
-    "userId": 6937423668
+    "createdAt": "2026-02-27T19:43:54.554516978",
+    "id": "7394da94-7586-49df-915d-db7aec50e9e3",
+    "text": "George Gina Lucy",
+    "userId": 7755640650
   },
   {
-    "createdAt": "2026-02-24T17:17:57.909252",
-    "id": "1c90c414-c19e-4c21-9c3d-92b38826f2d6",
+    "createdAt": "2026-02-27T19:45:42.250990429",
+    "id": "b0e056e2-6558-49bc-bed2-16ff8300a921",
+    "text": "Yves Saint Laurent YSL",
+    "userId": 7755640650
+  },
+  {
+    "createdAt": "2026-02-24T23:01:07.177021002",
+    "id": "8a4112ca-62c9-46e1-8231-f6aba1dc4f3f",
     "text": "number nine",
     "userId": 1080595280
+  },
+  {
+    "createdAt": "2026-02-28T15:54:20.421178982",
+    "id": "6dd25c7b-1a88-493c-b7ae-b02f9e5b9200",
+    "text": "Maison Margiela",
+    "userId": 7755640650
+  },
+  {
+    "createdAt": "2026-02-24T23:00:48.488015709",
+    "id": "c249ee28-b806-4aff-90fb-8c75768bf29d",
+    "text": "gucci",
+    "userId": 1080595280
+  },
+  {
+    "createdAt": "2026-02-27T19:44:55.189722947",
+    "id": "102bb320-16b6-4089-b24a-4305fb0847e3",
+    "text": "Gucci",
+    "userId": 7755640650
+  },
+  {
+    "createdAt": "2026-02-24T23:11:13.405870914",
+    "id": "21e4c8d1-1ac8-4f1a-b56f-8bbbdc788010",
+    "text": "off white",
+    "userId": 1080595280
+  },
+  {
+    "createdAt": "2026-02-27T19:42:26.939601828",
+    "id": "ba53143d-9093-4548-91cc-dd099c396625",
+    "text": "Dolce & Gabbana",
+    "userId": 7755640650
+  },
+  {
+    "createdAt": "2026-02-24T23:19:59.909201770",
+    "id": "cbeb1a11-0283-4a85-990a-3b509dcc398c",
+    "text": "Отдам даром",
+    "userId": 5328022266
+  },
+  {
+    "createdAt": "2026-02-27T19:44:42.018575259",
+    "id": "e495b7be-c171-4200-af32-7dc8a61e630f",
+    "text": "Number (N)ine",
+    "userId": 7755640650
+  },
+  {
+    "createdAt": "2026-02-27T19:42:48.831437958",
+    "id": "c08d28fd-3cda-4aad-8488-5b6a1438bd78",
+    "text": "Ralph Lauren",
+    "userId": 7755640650
   }
 ]

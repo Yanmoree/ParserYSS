@@ -21,7 +21,7 @@ public class UserSettings {
         // Значения по умолчанию
         this.minPrice = 0;
         this.maxPrice = 999999999;
-        this.checkIntervalSeconds = 25; // 25 секунд
+        this.checkIntervalSeconds = 10; // 10 секунд - интервал между циклами
         this.maxAgeMinutes = 0; // Не используется
         this.maxPages = 3;
         // По умолчанию включены все платформы
@@ -136,7 +136,7 @@ public class UserSettings {
         
         settings.setMinPrice(json.optDouble("minPrice", 0));
         settings.setMaxPrice(json.optDouble("maxPrice", 999999999));
-        settings.setCheckIntervalSeconds(json.optInt("checkIntervalSeconds", 25));
+        settings.setCheckIntervalSeconds(json.optInt("checkIntervalSeconds", 10));
         settings.setMaxAgeMinutes(json.optInt("maxAgeMinutes", 0));
         settings.setMaxPages(json.optInt("maxPages", 3));
         

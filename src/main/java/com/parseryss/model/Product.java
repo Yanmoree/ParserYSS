@@ -133,4 +133,40 @@ public class Product {
     public void setCategory(String category) {
         this.category = category;
     }
+    
+    // Курсы валют (приблизительные)
+    private static final double YEN_TO_RUB = 0.65;  // 1 йена ≈ 0.65 рубля
+    private static final double YUAN_TO_RUB = 14.0; // 1 юань ≈ 14 рублей
+    
+    /**
+     * Получить цену в рублях
+     */
+    public double getPriceRubles() {
+        if ("avito".equalsIgnoreCase(site)) {
+            return price; // Уже в рублях
+        }
+        if ("mercari".equalsIgnoreCase(site)) {
+            return Math.round(price * YEN_TO_RUB * 100.0) / 100.0;
+        }
+        if ("goofish".equalsIgnoreCase(site)) {
+            return Math.round(price * YUAN_TO_RUB * 100.0) / 100.0;
+        }
+        return price;
+    }
+    
+    /**
+     * Получить полное отображение цены: "¥1000 (~650₽)" или "1000₽"
+     */
+    public String getFullPriceDisplay() {
+        if ("avito".equalsIgnoreCase(site)) {
+            return String.format("%.0f₽", price);
+        }
+        if ("mercari".equalsIgnoreCase(site)) {
+            return String.format("¥%.0f (~%.0f₽)", price, getPriceRubles());
+        }
+        if ("goofish".equalsIgnoreCase(site)) {
+            return String.format("%.2f¥ (~%.0f₽)", price, getPriceRubles());
+        }
+        return String.format("%.2f", price);
+    }
 }

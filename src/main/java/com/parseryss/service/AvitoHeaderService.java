@@ -26,6 +26,9 @@ public class AvitoHeaderService {
     private static long headersTimestamp = 0;
     private static final long HEADERS_TTL = 2 * 60 * 60 * 1000; // 2 часа
     
+    private static java.util.concurrent.ScheduledExecutorService scheduler;
+    private static volatile boolean isInitialized = false;
+    
     public static synchronized Map<String, String> getHeaders() {
         if (!cachedHeaders.isEmpty() && System.currentTimeMillis() - headersTimestamp < HEADERS_TTL) {
             logger.info("📋 Используем кэшированные заголовки Avito ({} шт, возраст: {} мин)", 
@@ -46,14 +49,47 @@ public class AvitoHeaderService {
         return headers;
     }
     
+    /**
+     * Инициализация сервиса с автообновлением каждые 2 часа
+     */
+    public static synchronized void initialize() {
+        if (isInitialized) {
+            return;
+        }
+        
+        logger.info("🍪 Инициализация AvitoHeaderService...");
+        
+        // Создаем планировщик
+        scheduler = java.util.concurrent.Executors.newScheduledThreadPool(1);
+        
+        // Первоначальная загрузка cookies
+        logger.info("🔄 Первоначальная загрузка cookies Avito...");
+        refreshHeaders();
+        
+        // Автообновление каждые 2 часа
+        scheduler.scheduleAtFixedRate(() -> {
+            try {
+                logger.info("🔄 Автообновление cookies Avito...");
+                refreshHeaders();
+                logger.info("✅ Cookies Avito успешно обновлены");
+            } catch (Exception e) {
+                logger.error("❌ Ошибка при автообновлении cookies Avito: {}", e.getMessage());
+            }
+        }, 120, 120, java.util.concurrent.TimeUnit.MINUTES);
+        
+        isInitialized = true;
+        logger.info("✅ AvitoHeaderService инициализирован (автообновление каждые 120 минут)");
+    }
+    
     public static synchronized Map<String, String> getCookies() {
         if (!cachedCookies.isEmpty() && System.currentTimeMillis() - headersTimestamp < HEADERS_TTL) {
-            logger.info("🍪 Используем кэшированные cookies Avito ({} шт)", cachedCookies.size());
+            logger.debug("🍪 Используем кэшированные cookies Avito ({} шт, возраст: {} мин)", 
+                cachedCookies.size(), (System.currentTimeMillis() - headersTimestamp) / 60000);
             return new HashMap<>(cachedCookies);
         }
         
-        // Если кэш пуст, получаем свежие заголовки (они также обновят cookies)
-        getHeaders();
+        logger.warn("⚠️ Cookies Avito не инициализированы или устарели, обновляем...");
+        refreshHeaders();
         return new HashMap<>(cachedCookies);
     }
     
@@ -80,10 +116,18 @@ public class AvitoHeaderService {
      * Принудительное обновление заголовков
      */
     public static synchronized Map<String, String> refreshHeaders() {
-        cachedHeaders.clear();
-        cachedCookies.clear();
-        headersTimestamp = 0;
-        return getHeaders();
+        logger.info("🔄 Перехватываем свежие cookies Avito...");
+        Map<String, String> headers = interceptHeadersWithPerformanceLogs();
+        
+        // Cookies уже обновлены в interceptHeadersWithPerformanceLogs
+        if (!cachedCookies.isEmpty()) {
+            headersTimestamp = System.currentTimeMillis();
+            logger.info("✅ Cookies Avito обновлены ({} шт)", cachedCookies.size());
+        } else {
+            logger.error("❌ Не удалось получить cookies Avito");
+        }
+        
+        return headers;
     }
     
     /**

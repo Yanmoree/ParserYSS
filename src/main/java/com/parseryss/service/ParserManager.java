@@ -30,8 +30,8 @@ public class ParserManager {
     // Пул потоков для параллельного парсинга
     private final ExecutorService executorService;
     
-    // Активные задачи парсинга для каждого пользователя
-    private final Map<Long, ScheduledFuture<?>> activeParsingTasks;
+    // Активные задачи парсинга для каждой платформы пользователя (ключ: "userId_platform")
+    private final Map<String, ScheduledFuture<?>> activeParsingTasks;
     
     // Планировщик для периодического парсинга
     private final ScheduledExecutorService scheduler;
@@ -85,12 +85,6 @@ public class ParserManager {
      * Запустить парсинг для пользователя
      */
     public boolean startParsing(long userId) {
-        // Проверяем, не запущен ли уже парсинг
-        if (activeParsingTasks.containsKey(userId)) {
-            logger.warn("⚠️ Парсинг для пользователя {} уже запущен", userId);
-            return false;
-        }
-        
         // Проверяем пользователя
         User user = userRepository.getUser(userId);
         if (user == null) {
@@ -117,43 +111,107 @@ public class ParserManager {
             return false;
         }
         
-        // Запускаем периодическую задачу парсинга
-        int intervalSeconds = settings.getCheckIntervalSeconds();
-        ScheduledFuture<?> task = scheduler.scheduleWithFixedDelay(
-            () -> runParsingCycle(userId, user, settings, queries),
-            0, // Начать сразу
-            intervalSeconds,
-            TimeUnit.SECONDS
-        );
+        Set<String> enabledPlatforms = settings.getEnabledPlatforms();
+        if (enabledPlatforms.isEmpty()) {
+            logger.warn("⚠️ У пользователя {} нет включенных платформ", userId);
+            return false;
+        }
         
-        activeParsingTasks.put(userId, task);
-        logger.info("🚀 Парсинг запущен для пользователя {} (интервал: {}с)", userId, intervalSeconds);
+        // Запускаем НЕЗАВИСИМЫЙ цикл для КАЖДОЙ платформы
+        boolean anyStarted = false;
+        for (String platform : enabledPlatforms) {
+            if (!userRepository.hasPlatformAccess(userId, platform)) {
+                logger.debug("⚠️ У пользователя {} нет доступа к {}", userId, platform);
+                continue;
+            }
+            
+            SiteParser parser = parserFactory.getParser(platform);
+            if (parser == null) {
+                logger.warn("⚠️ Парсер для {} не найден", platform);
+                continue;
+            }
+            
+            String taskKey = userId + "_" + platform;
+            if (activeParsingTasks.containsKey(taskKey)) {
+                logger.warn("⚠️ Парсинг {} для пользователя {} уже запущен", platform, userId);
+                continue;
+            }
+            
+            // Разные интервалы для разных платформ
+            int intervalSeconds = getIntervalForPlatform(platform);
+            
+            // Запускаем независимый цикл для платформы
+            ScheduledFuture<?> task = scheduler.scheduleWithFixedDelay(
+                () -> runPlatformParsingCycle(userId, platform, parser, queries, settings),
+                0,
+                intervalSeconds,
+                TimeUnit.SECONDS
+            );
+            
+            activeParsingTasks.put(taskKey, task);
+            logger.info("🚀 Парсинг {} запущен для пользователя {} (интервал: {}с)", platform, userId, intervalSeconds);
+            anyStarted = true;
+        }
         
-        return true;
+        return anyStarted;
     }
     
     /**
-     * Остановить парсинг для пользователя
+     * Получить интервал для платформы (в секундах)
+     */
+    private int getIntervalForPlatform(String platform) {
+        if ("avito".equalsIgnoreCase(platform)) {
+            return 60; // Avito: 60 секунд между циклами (защита от бана)
+        } else {
+            return 10; // Mercari/Goofish: 10 секунд
+        }
+    }
+    
+    /**
+     * Остановить парсинг для пользователя (все платформы)
      */
     public boolean stopParsing(long userId) {
-        ScheduledFuture<?> task = activeParsingTasks.remove(userId);
+        boolean anyStopped = false;
+        List<String> keysToRemove = new ArrayList<>();
         
-        if (task == null) {
+        // Находим все задачи этого пользователя
+        String userPrefix = userId + "_";
+        for (String key : activeParsingTasks.keySet()) {
+            if (key.startsWith(userPrefix)) {
+                keysToRemove.add(key);
+            }
+        }
+        
+        if (keysToRemove.isEmpty()) {
             logger.warn("⚠️ Парсинг для пользователя {} не запущен", userId);
             return false;
         }
         
-        task.cancel(false);
-        logger.info("🛑 Парсинг остановлен для пользователя {}", userId);
+        // Останавливаем все задачи
+        for (String key : keysToRemove) {
+            ScheduledFuture<?> task = activeParsingTasks.remove(key);
+            if (task != null) {
+                task.cancel(false);
+                String platform = key.substring(userPrefix.length());
+                logger.info("🛑 Парсинг {} остановлен для пользователя {}", platform, userId);
+                anyStopped = true;
+            }
+        }
         
-        return true;
+        return anyStopped;
     }
     
     /**
-     * Проверить, запущен ли парсинг для пользователя
+     * Проверить, запущен ли парсинг для пользователя (любая платформа)
      */
     public boolean isParsingActive(long userId) {
-        return activeParsingTasks.containsKey(userId);
+        String userPrefix = userId + "_";
+        for (String key : activeParsingTasks.keySet()) {
+            if (key.startsWith(userPrefix)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -163,90 +221,114 @@ public class ParserManager {
         return isParsingActive(userId);
     }
     
+
+    
     /**
-     * Выполнить один цикл парсинга для пользователя
+     * Выполнить один цикл парсинга для ОДНОЙ платформы
      */
-    private void runParsingCycle(long userId, User user, UserSettings settings, List<Query> queries) {
+    private void runPlatformParsingCycle(long userId, String platform, SiteParser parser, List<Query> queries, UserSettings settings) {
         try {
-            logger.info("🔄 Начат цикл парсинга для пользователя {}", userId);
+            logger.info("🔄 Начат цикл парсинга {} для пользователя {}", platform, userId);
             
-            // Получаем включенные платформы
-            Set<String> enabledPlatforms = settings.getEnabledPlatforms();
+            int totalProducts = 0;
+            boolean isAvito = "avito".equalsIgnoreCase(platform);
+            boolean isGoofish = "goofish".equalsIgnoreCase(platform);
+            Random random = new Random();
             
-            if (enabledPlatforms.isEmpty()) {
-                logger.warn("⚠️ У пользователя {} нет включенных платформ", userId);
-                return;
-            }
-            
-            // Парсим каждую комбинацию (платформа, запрос)
-            List<CompletableFuture<List<Product>>> futures = new ArrayList<>();
-            
-            for (String platform : enabledPlatforms) {
-                // Проверяем доступ к платформе
-                if (!userRepository.hasPlatformAccess(userId, platform)) {
-                    logger.debug("⚠️ У пользователя {} нет доступа к платформе {}", userId, platform);
-                    continue;
-                }
-                
-                SiteParser parser = parserFactory.getParser(platform);
-                if (parser == null) {
-                    logger.warn("⚠️ Парсер для платформы {} не найден", platform);
-                    continue;
-                }
+            if (isAvito) {
+                // Avito: ПОСЛЕДОВАТЕЛЬНО с задержкой 15-20 сек (защита от бана)
+                int requestCount = 0;
                 
                 for (Query query : queries) {
-                    // Пропускаем неактивные запросы
-                    if (!query.isActive()) {
-                        continue;
-                    }
+                    if (!query.isActive()) continue;
                     
-                    // Запускаем парсинг асинхронно с немедленной отправкой товаров
-                    CompletableFuture<List<Product>> future = CompletableFuture.supplyAsync(() -> {
+                    if (requestCount > 0) {
                         try {
-                            List<Product> products = parser.searchNewProducts(userId, query.getQueryId(), query.getQueryText(), settings);
-                            
-                            // Отправляем товары сразу после нахождения
-                            if (!products.isEmpty() && resultCallback != null) {
-                                // Фильтруем по настройкам
-                                List<Product> filtered = filterProducts(products, settings);
-                                if (!filtered.isEmpty()) {
-                                    ParsingResult result = new ParsingResult(userId, filtered);
-                                    resultCallback.accept(result);
-                                    logger.info("📤 Отправлено {} товаров для '{}' на {}", filtered.size(), query.getQueryText(), platform);
-                                }
-                            }
-                            
-                            return products;
-                        } catch (Exception e) {
-                            logger.error("❌ Ошибка парсинга {} для запроса '{}': {}", 
-                                platform, query.getQueryText(), e.getMessage());
-                            return Collections.emptyList();
+                            // Случайная задержка 15-20 секунд
+                            int delaySeconds = 15 + random.nextInt(6); // 15-20 сек
+                            logger.debug("⏳ [Avito] Задержка {} сек...", delaySeconds);
+                            Thread.sleep(delaySeconds * 1000L);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
                         }
-                    }, executorService);
+                    }
+                    requestCount++;
                     
-                    futures.add(future);
+                    totalProducts += parseAndSendProducts(userId, platform, parser, query, settings);
+                }
+            } else if (isGoofish) {
+                // Goofish: ПОСЛЕДОВАТЕЛЬНО с задержкой 3-5 сек (защита от бана IP)
+                int requestCount = 0;
+                
+                for (Query query : queries) {
+                    if (!query.isActive()) continue;
+                    
+                    if (requestCount > 0) {
+                        try {
+                            // Случайная задержка 3-5 секунд
+                            int delaySeconds = 3 + random.nextInt(3); // 3-5 сек
+                            logger.debug("⏳ [Goofish] Задержка {} сек...", delaySeconds);
+                            Thread.sleep(delaySeconds * 1000L);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                    }
+                    requestCount++;
+                    
+                    totalProducts += parseAndSendProducts(userId, platform, parser, query, settings);
+                }
+            } else {
+                // Mercari: ПОСЛЕДОВАТЕЛЬНО с задержкой 1 секунда
+                int requestCount = 0;
+                
+                for (Query query : queries) {
+                    if (!query.isActive()) continue;
+                    
+                    if (requestCount > 0) {
+                        try {
+                            // Задержка 1 секунда между запросами
+                            logger.debug("⏳ [{}] Задержка 1 сек...", platform);
+                            Thread.sleep(1000L);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                    }
+                    requestCount++;
+                    
+                    totalProducts += parseAndSendProducts(userId, platform, parser, query, settings);
                 }
             }
             
-            // Ждем завершения всех задач
-            CompletableFuture.allOf(futures.toArray(new CompletableFuture[0])).join();
-            
-            // Подсчитываем общее количество найденных товаров
-            int totalProducts = 0;
-            for (CompletableFuture<List<Product>> future : futures) {
-                try {
-                    List<Product> products = future.get();
-                    totalProducts += products.size();
-                } catch (Exception e) {
-                    logger.error("❌ Ошибка получения результатов: {}", e.getMessage());
-                }
-            }
-            
-            logger.info("✅ Цикл парсинга завершен для пользователя {}: найдено {} товаров", 
-                userId, totalProducts);
+            logger.info("✅ Цикл {} завершен: {} товаров", platform, totalProducts);
             
         } catch (Exception e) {
-            logger.error("❌ Ошибка в цикле парсинга для пользователя {}: {}", userId, e.getMessage(), e);
+            logger.error("❌ Ошибка в цикле {} для пользователя {}: {}", platform, userId, e.getMessage(), e);
+        }
+    }
+    
+    /**
+     * Парсить и отправить товары для одного запроса
+     */
+    private int parseAndSendProducts(long userId, String platform, SiteParser parser, Query query, UserSettings settings) {
+        try {
+            List<Product> products = parser.searchNewProducts(userId, query.getQueryId(), query.getQueryText(), settings);
+            
+            if (!products.isEmpty() && resultCallback != null) {
+                List<Product> filtered = filterProducts(products, settings);
+                if (!filtered.isEmpty()) {
+                    ParsingResult result = new ParsingResult(userId, filtered);
+                    resultCallback.accept(result);
+                    logger.info("📤 Отправлено {} товаров для '{}' на {}", filtered.size(), query.getQueryText(), platform);
+                }
+            }
+            
+            return products.size();
+        } catch (Exception e) {
+            logger.error("❌ Ошибка парсинга {} для '{}': {}", platform, query.getQueryText(), e.getMessage());
+            return 0;
         }
     }
     
@@ -284,7 +366,13 @@ public class ParserManager {
      * Получить список активных пользователей
      */
     public Set<Long> getActiveUsers() {
-        return new HashSet<>(activeParsingTasks.keySet());
+        Set<Long> userIds = new HashSet<>();
+        for (String key : activeParsingTasks.keySet()) {
+            // Ключ имеет формат "userId_platform"
+            String userIdStr = key.split("_")[0];
+            userIds.add(Long.parseLong(userIdStr));
+        }
+        return userIds;
     }
     
     /**
@@ -293,7 +381,8 @@ public class ParserManager {
     public void stopAll() {
         logger.info("🛑 Остановка всех активных парсингов...");
         
-        for (Long userId : new ArrayList<>(activeParsingTasks.keySet())) {
+        Set<Long> userIds = getActiveUsers();
+        for (Long userId : userIds) {
             stopParsing(userId);
         }
         

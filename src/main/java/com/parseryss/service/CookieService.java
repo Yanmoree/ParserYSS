@@ -66,12 +66,15 @@ public class CookieService {
             logger.info("✅ Автообновление настроено: каждые {} минут", interval);
         }
 
-        // Предварительная загрузка cookies
+        // Предварительная загрузка cookies (не критично если не удалось)
         try {
-            logger.info("🔄 Предварительная загрузка cookies...");
+            logger.info("🔄 Предварительная загрузка cookies Goofish...");
             getFreshCookies(PRIMARY_DOMAIN);
+            logger.info("✅ Cookies Goofish загружены");
         } catch (Exception e) {
-            logger.error("❌ Ошибка предварительной загрузки cookies: {}", e.getMessage());
+            logger.warn("⚠️ Не удалось загрузить cookies Goofish при старте: {}", e.getMessage());
+            logger.info("ℹ️ Cookies будут загружены при первом запросе или через {} минут", 
+                Config.getInt("cookie.update.interval.minutes", 120));
         }
 
         logger.info("✅ CookieService инициализирован");

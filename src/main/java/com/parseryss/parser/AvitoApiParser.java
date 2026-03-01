@@ -24,7 +24,7 @@ public class AvitoApiParser extends BaseParser {
     private static final Logger logger = LoggerFactory.getLogger(AvitoApiParser.class);
     
     private static final String API_URL = "https://www.avito.ru/web/1/js/items";
-    private static final String DEFAULT_LOCATION_ID = "625650";
+    private static final String DEFAULT_LOCATION_ID = "621540"; // Вся Россия
     private static final String DEFAULT_CATEGORY_ID = "5";
     
     // Примечание: X-Forwarded-For не работает без реального прокси
@@ -109,11 +109,10 @@ public class AvitoApiParser extends BaseParser {
                 .append("categoryId=").append(categoryId)
                 .append("&locationId=").append(locationId)
                 .append("&name=").append(URLEncoder.encode(query, StandardCharsets.UTF_8.toString()))
-                .append("&geoCoords=").append(URLEncoder.encode("59.127443,37.906902", StandardCharsets.UTF_8.toString()))
+                .append("&bt=1")
                 .append("&cd=1")
                 .append("&s=104")
                 .append("&verticalCategoryId=").append("4")
-                .append("&localPriority=0")
                 .append("&updateListOnly=true");
             
             if (page > 1) {
@@ -140,7 +139,7 @@ public class AvitoApiParser extends BaseParser {
             conn.setRequestProperty("x-requested-with", "XMLHttpRequest");
             conn.setRequestProperty("x-source", "client-browser");
             conn.setRequestProperty("priority", "u=1, i");
-            conn.setRequestProperty("Referer", "https://www.avito.ru/cherepovets/lichnye_veschi?cd=1&q=" + URLEncoder.encode(query, StandardCharsets.UTF_8.toString()));
+            conn.setRequestProperty("Referer", "https://www.avito.ru/all/lichnye_veschi?cd=1&q=" + URLEncoder.encode(query, StandardCharsets.UTF_8.toString()));
             
             String cookieHeader = AvitoHeaderService.cookiesToString(cookies);
             if (!cookieHeader.isEmpty()) {

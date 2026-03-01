@@ -23,8 +23,8 @@ import java.util.List;
 public class TelegramBotService extends TelegramLongPollingBot {
     private static final Logger logger = LoggerFactory.getLogger(TelegramBotService.class);
     
-    private static final String BOT_TOKEN = "8291586731:AAFIjnerJdg0IzwSm2JgNkVfrOc0rPyHWW8";
-    private static final String BOT_USERNAME = "yss_parser_bot";
+    private static final String BOT_TOKEN = "8538627254:AAE_niIKdyWgM69JSrto7tKntao5vS7qj5g";
+    private static final String BOT_USERNAME = "multiparse_bot";
     
     private final UserRepository userRepository;
     private final QueryRepository queryRepository;
@@ -275,7 +275,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
             StringBuilder text = new StringBuilder();
             text.append("🆕 <b>Новый товар!</b>\n\n");
             text.append("📦 <b>").append(escapeHtml(product.getTitle())).append("</b>\n\n");
-            text.append("💰 Цена: <b>").append(formatPrice(product.getPrice())).append("</b>\n");
+            text.append("💰 Цена: <b>").append(escapeHtml(product.getFullPriceDisplay())).append("</b>\n");
             text.append("🌐 Платформа: <b>").append(product.getSite()).append("</b>\n");
             text.append("🔍 Запрос: <i>").append(escapeHtml(product.getQuery())).append("</i>\n");
             
@@ -331,8 +331,9 @@ public class TelegramBotService extends TelegramLongPollingBot {
     }
     
     /**
-     * Форматирование цены
+     * Форматирование цены (устаревший метод, используйте product.getFullPriceDisplay())
      */
+    @Deprecated
     private String formatPrice(double price) {
         if (price == 0) return "Не указана";
         return String.format("%.2f ₽", price);

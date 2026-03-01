@@ -27,7 +27,42 @@ public class MercariHeaderService {
     // Кэш заголовков
     private static Map<String, String> cachedHeaders = new ConcurrentHashMap<>();
     private static long headersTimestamp = 0;
-    private static final long HEADERS_TTL = 30 * 60 * 1000; // 30 минут
+    private static final long HEADERS_TTL = 2 * 60 * 60 * 1000; // 2 часа
+    
+    private static java.util.concurrent.ScheduledExecutorService scheduler;
+    private static volatile boolean isInitialized = false;
+    
+    /**
+     * Инициализация сервиса с автообновлением каждые 2 часа
+     */
+    public static synchronized void initialize() {
+        if (isInitialized) {
+            return;
+        }
+        
+        logger.info("🍪 Инициализация MercariHeaderService...");
+        
+        // Создаем планировщик
+        scheduler = java.util.concurrent.Executors.newScheduledThreadPool(1);
+        
+        // Первоначальная загрузка headers
+        logger.info("🔄 Первоначальная загрузка headers Mercari...");
+        refreshHeaders();
+        
+        // Автообновление каждые 2 часа
+        scheduler.scheduleAtFixedRate(() -> {
+            try {
+                logger.info("🔄 Автообновление headers Mercari...");
+                refreshHeaders();
+                logger.info("✅ Headers Mercari успешно обновлены");
+            } catch (Exception e) {
+                logger.error("❌ Ошибка при автообновлении headers Mercari: {}", e.getMessage());
+            }
+        }, 120, 120, java.util.concurrent.TimeUnit.MINUTES);
+        
+        isInitialized = true;
+        logger.info("✅ MercariHeaderService инициализирован (автообновление каждые 120 минут)");
+    }
     
     /**
      * Получение заголовков (из кэша или свежих)
@@ -35,11 +70,20 @@ public class MercariHeaderService {
     public static synchronized Map<String, String> getHeaders() {
         // Проверяем кэш
         if (!cachedHeaders.isEmpty() && System.currentTimeMillis() - headersTimestamp < HEADERS_TTL) {
-            logger.info("📋 Используем кэшированные заголовки Mercari ({} шт, возраст: {} мин)", 
+            logger.debug("📋 Используем кэшированные заголовки Mercari ({} шт, возраст: {} мин)", 
                 cachedHeaders.size(), (System.currentTimeMillis() - headersTimestamp) / 60000);
             return new HashMap<>(cachedHeaders);
         }
         
+        logger.warn("⚠️ Headers Mercari не инициализированы или устарели, обновляем...");
+        refreshHeaders();
+        return new HashMap<>(cachedHeaders);
+    }
+    
+    /**
+     * Принудительное обновление заголовков
+     */
+    public static synchronized Map<String, String> refreshHeaders() {
         logger.info("🔄 Перехватываем свежие заголовки Mercari...");
         Map<String, String> headers = interceptHeadersWithPerformanceLogs();
         
@@ -48,18 +92,11 @@ public class MercariHeaderService {
             cachedHeaders.putAll(headers);
             headersTimestamp = System.currentTimeMillis();
             logger.info("✅ Заголовки Mercari обновлены ({} шт)", headers.size());
+        } else {
+            logger.error("❌ Не удалось получить заголовки Mercari");
         }
         
-        return headers;
-    }
-    
-    /**
-     * Принудительное обновление заголовков
-     */
-    public static synchronized Map<String, String> refreshHeaders() {
-        cachedHeaders.clear();
-        headersTimestamp = 0;
-        return getHeaders();
+        return new HashMap<>(cachedHeaders);
     }
     
     /**
