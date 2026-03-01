@@ -3,6 +3,7 @@
   "minPrice": 0,
   "maxPages": 3,
   "enabledPlatforms": [
+    "avito",
     "goofish",
     "mercari"
   ],

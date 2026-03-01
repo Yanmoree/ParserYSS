@@ -1,5 +1,19 @@
 [
   {
+    "lastPublishTime": 1772363032912,
+    "userId": 1080595280,
+    "platform": "avito",
+    "lastProductId": "7652642090",
+    "queryId": "aae7e83b-7785-4930-8d99-a806493a4fa0"
+  },
+  {
+    "lastPublishTime": 1772218286866,
+    "userId": 5328022266,
+    "platform": "avito",
+    "lastProductId": "7901929137",
+    "queryId": "0630dc11-2fbb-4194-8a31-1190af80b5e1"
+  },
+  {
     "lastPublishTime": 1771942683859,
     "userId": 1080595280,
     "platform": "goofish",
@@ -7,17 +21,304 @@
     "queryId": "1c90c414-c19e-4c21-9c3d-92b38826f2d6"
   },
   {
-    "lastPublishTime": 1771942564242,
+    "lastPublishTime": 1771995652550,
+    "userId": 6937423668,
+    "platform": "avito",
+    "lastProductId": "7892175337",
+    "queryId": "393a5d15-dbdb-40bb-a505-f21181bafb9d"
+  },
+  {
+    "lastPublishTime": 1772019088045,
+    "userId": 6937423668,
+    "platform": "mercari",
+    "lastProductId": "m21452985191",
+    "queryId": "4491816e-537f-4ef2-b399-061301898ac5"
+  },
+  {
+    "lastPublishTime": 1772398466509,
     "userId": 1080595280,
     "platform": "mercari",
-    "lastProductId": "m87874713248",
-    "queryId": "5b8ed558-2d06-4fc1-a587-81fb96e8d7e4"
+    "lastProductId": "m88830403927",
+    "queryId": "21e4c8d1-1ac8-4f1a-b56f-8bbbdc788010"
+  },
+  {
+    "lastPublishTime": 1772270290021,
+    "userId": 7755640650,
+    "platform": "avito",
+    "lastProductId": "4466386396",
+    "queryId": "4912a413-b95b-4d28-b042-875c85fb7b36"
+  },
+  {
+    "lastPublishTime": 1772314844473,
+    "userId": 7755640650,
+    "platform": "avito",
+    "lastProductId": "7892083142",
+    "queryId": "bc1cc656-2212-44fe-8819-76408a1c9497"
+  },
+  {
+    "lastPublishTime": 1771942106142,
+    "userId": 1080595280,
+    "platform": "goofish",
+    "lastProductId": "1025359764425",
+    "queryId": "d7aff394-107a-41e4-adb9-14cc1992187c"
+  },
+  {
+    "lastPublishTime": 1772380366370,
+    "userId": 1080595280,
+    "platform": "goofish",
+    "lastProductId": "1024961091020",
+    "queryId": "04fbb1d6-4641-4434-9d78-92068083f19a"
+  },
+  {
+    "lastPublishTime": 1772391547225,
+    "userId": 1080595280,
+    "platform": "mercari",
+    "lastProductId": "2JMqMzYj4YFd3aTjirSz3g",
+    "queryId": "8a4112ca-62c9-46e1-8231-f6aba1dc4f3f"
+  },
+  {
+    "lastPublishTime": 1772366355541,
+    "userId": 1080595280,
+    "platform": "goofish",
+    "lastProductId": "1024893503321",
+    "queryId": "42c844a5-f5ae-45b4-a64b-fe098ba5bd1b"
+  },
+  {
+    "lastPublishTime": 1772283883941,
+    "userId": 7755640650,
+    "platform": "avito",
+    "lastProductId": "7890914347",
+    "queryId": "968634b4-42d8-437d-b694-a17f75ca115d"
+  },
+  {
+    "lastPublishTime": 1771942080510,
+    "userId": 6937423668,
+    "platform": "goofish",
+    "lastProductId": "1023665030492",
+    "queryId": "661eacac-107a-4947-84a6-f8dd440fbfcc"
+  },
+  {
+    "lastPublishTime": 1772314867793,
+    "userId": 7755640650,
+    "platform": "avito",
+    "lastProductId": "7892083142",
+    "queryId": "fcaf8dac-bf3a-42da-a07f-d83467477b87"
+  },
+  {
+    "lastPublishTime": 1772216956709,
+    "userId": 7755640650,
+    "platform": "avito",
+    "lastProductId": "7947616848",
+    "queryId": "e495b7be-c171-4200-af32-7dc8a61e630f"
+  },
+  {
+    "lastPublishTime": 1772311646289,
+    "userId": 7755640650,
+    "platform": "avito",
+    "lastProductId": "7848576337",
+    "queryId": "c08d28fd-3cda-4aad-8488-5b6a1438bd78"
+  },
+  {
+    "lastPublishTime": 1772349323281,
+    "userId": 1080595280,
+    "platform": "mercari",
+    "lastProductId": "m18952683645",
+    "queryId": "42c844a5-f5ae-45b4-a64b-fe098ba5bd1b"
+  },
+  {
+    "lastPublishTime": 1771942564280,
+    "userId": 1080595280,
+    "platform": "mercari",
+    "lastProductId": "m44270475074",
+    "queryId": "d7aff394-107a-41e4-adb9-14cc1992187c"
+  },
+  {
+    "lastPublishTime": 1772362872198,
+    "userId": 7755640650,
+    "platform": "avito",
+    "lastProductId": "7937376771",
+    "queryId": "ba53143d-9093-4548-91cc-dd099c396625"
+  },
+  {
+    "lastPublishTime": 1772315226533,
+    "userId": 1080595280,
+    "platform": "avito",
+    "lastProductId": "7892083142",
+    "queryId": "d1d80f6e-ce30-468d-afa8-dbe4ff664d77"
+  },
+  {
+    "lastPublishTime": 1772211063704,
+    "userId": 7755640650,
+    "platform": "avito",
+    "lastProductId": "7874304362",
+    "queryId": "174cb8b4-916a-4b4d-95a1-2a477df78d59"
   },
   {
     "lastPublishTime": 1771940262165,
     "userId": 1080595280,
     "platform": "goofish",
     "lastProductId": "1023658066388",
+    "queryId": "5b8ed558-2d06-4fc1-a587-81fb96e8d7e4"
+  },
+  {
+    "lastPublishTime": 1772315318375,
+    "userId": 1080595280,
+    "platform": "avito",
+    "lastProductId": "7892083142",
+    "queryId": "c249ee28-b806-4aff-90fb-8c75768bf29d"
+  },
+  {
+    "lastPublishTime": 1772017451673,
+    "userId": 6937423668,
+    "platform": "goofish",
+    "lastProductId": "1025770116023",
+    "queryId": "4491816e-537f-4ef2-b399-061301898ac5"
+  },
+  {
+    "lastPublishTime": 1771963029660,
+    "userId": 1080595280,
+    "platform": "avito",
+    "lastProductId": "3176168310",
+    "queryId": "2ee04b65-9512-4be9-bb09-edf63b377c22"
+  },
+  {
+    "lastPublishTime": 1772384990659,
+    "userId": 1080595280,
+    "platform": "goofish",
+    "lastProductId": "1025654702623",
+    "queryId": "3f36ab2f-318c-4d00-a339-9018368a5a59"
+  },
+  {
+    "lastPublishTime": 1771942684222,
+    "userId": 1080595280,
+    "platform": "mercari",
+    "lastProductId": "2JMaxjGJiKnMMhnbXYHDkV",
+    "queryId": "ed07e846-196c-46cc-bf42-616cbfa9e6ad"
+  },
+  {
+    "lastPublishTime": 1772211040792,
+    "userId": 7755640650,
+    "platform": "avito",
+    "lastProductId": "7846393054",
+    "queryId": "593b3445-7de4-4bda-8ec2-ccb94cc6ae99"
+  },
+  {
+    "lastPublishTime": 1772315068465,
+    "userId": 7755640650,
+    "platform": "avito",
+    "lastProductId": "7892083142",
+    "queryId": "6dd25c7b-1a88-493c-b7ae-b02f9e5b9200"
+  },
+  {
+    "lastPublishTime": 1772362163844,
+    "userId": 1080595280,
+    "platform": "avito",
+    "lastProductId": "7947316273",
+    "queryId": "04fbb1d6-4641-4434-9d78-92068083f19a"
+  },
+  {
+    "lastPublishTime": 1772398249830,
+    "userId": 1080595280,
+    "platform": "mercari",
+    "lastProductId": "2JMqZUwPR3CiFASnHXaCEU",
+    "queryId": "3f36ab2f-318c-4d00-a339-9018368a5a59"
+  },
+  {
+    "lastPublishTime": 1772380353788,
+    "userId": 1080595280,
+    "platform": "goofish",
+    "lastProductId": "1026531553055",
+    "queryId": "d1d80f6e-ce30-468d-afa8-dbe4ff664d77"
+  },
+  {
+    "lastPublishTime": 1771942684011,
+    "userId": 1080595280,
+    "platform": "goofish",
+    "lastProductId": "1024565277383",
+    "queryId": "ed07e846-196c-46cc-bf42-616cbfa9e6ad"
+  },
+  {
+    "lastPublishTime": 1772380368906,
+    "userId": 1080595280,
+    "platform": "goofish",
+    "lastProductId": "1025623358443",
+    "queryId": "8a4112ca-62c9-46e1-8231-f6aba1dc4f3f"
+  },
+  {
+    "lastPublishTime": 1772385440881,
+    "userId": 1080595280,
+    "platform": "mercari",
+    "lastProductId": "m28027707136",
+    "queryId": "d1d80f6e-ce30-468d-afa8-dbe4ff664d77"
+  },
+  {
+    "lastPublishTime": 1771940417509,
+    "userId": 1080595280,
+    "platform": "avito",
+    "lastProductId": "7860413272",
+    "queryId": "3c93c067-4893-4c0e-99bf-0d17015b1392"
+  },
+  {
+    "lastPublishTime": 1772314957548,
+    "userId": 7755640650,
+    "platform": "avito",
+    "lastProductId": "7892083142",
+    "queryId": "c98d1e54-b2d4-4bd8-a75d-148a84fca001"
+  },
+  {
+    "lastPublishTime": 1772380269123,
+    "userId": 1080595280,
+    "platform": "avito",
+    "lastProductId": "7869043160",
+    "queryId": "8a4112ca-62c9-46e1-8231-f6aba1dc4f3f"
+  },
+  {
+    "lastPublishTime": 1771963031852,
+    "userId": 1080595280,
+    "platform": "goofish",
+    "lastProductId": "1023807206799",
+    "queryId": "1c75db4a-b3dd-447b-b127-65c5fe9a7050"
+  },
+  {
+    "lastPublishTime": 1772380434548,
+    "userId": 1080595280,
+    "platform": "mercari",
+    "lastProductId": "m17339515256",
+    "queryId": "aae7e83b-7785-4930-8d99-a806493a4fa0"
+  },
+  {
+    "lastPublishTime": 1771995674424,
+    "userId": 6937423668,
+    "platform": "avito",
+    "lastProductId": "7872012053",
+    "queryId": "4491816e-537f-4ef2-b399-061301898ac5"
+  },
+  {
+    "lastPublishTime": 1772018678716,
+    "userId": 6937423668,
+    "platform": "goofish",
+    "lastProductId": "1024083390480",
+    "queryId": "3031eee0-df02-4787-bac9-d1a2dd76c711"
+  },
+  {
+    "lastPublishTime": 1772019098438,
+    "userId": 6937423668,
+    "platform": "mercari",
+    "lastProductId": "m50971639457",
+    "queryId": "c68f8a67-394c-4085-9071-5e6a71280880"
+  },
+  {
+    "lastPublishTime": 1771963001525,
+    "userId": 1080595280,
+    "platform": "avito",
+    "lastProductId": "7858396599",
+    "queryId": "1c75db4a-b3dd-447b-b127-65c5fe9a7050"
+  },
+  {
+    "lastPublishTime": 1771942564242,
+    "userId": 1080595280,
+    "platform": "mercari",
+    "lastProductId": "m87874713248",
     "queryId": "5b8ed558-2d06-4fc1-a587-81fb96e8d7e4"
   },
   {
@@ -28,18 +329,130 @@
     "queryId": "f4c9ec34-5a00-4771-945e-f788d9ccd25d"
   },
   {
-    "lastPublishTime": 1771942106142,
-    "userId": 1080595280,
-    "platform": "goofish",
-    "lastProductId": "1025359764425",
-    "queryId": "d7aff394-107a-41e4-adb9-14cc1992187c"
+    "lastPublishTime": 1772355393435,
+    "userId": 7755640650,
+    "platform": "avito",
+    "lastProductId": "7362274748",
+    "queryId": "66aef427-1a9e-41d1-98b9-5a31ba7585f9"
   },
   {
-    "lastPublishTime": 1771942684222,
+    "lastPublishTime": 1772314934652,
+    "userId": 7755640650,
+    "platform": "avito",
+    "lastProductId": "7892083142",
+    "queryId": "13fa3917-b663-40d3-b128-d677fc5bd841"
+  },
+  {
+    "lastPublishTime": 1771963121314,
     "userId": 1080595280,
     "platform": "mercari",
-    "lastProductId": "2JMaxjGJiKnMMhnbXYHDkV",
-    "queryId": "ed07e846-196c-46cc-bf42-616cbfa9e6ad"
+    "lastProductId": "m83115059939",
+    "queryId": "1c75db4a-b3dd-447b-b127-65c5fe9a7050"
+  },
+  {
+    "lastPublishTime": 1772211154449,
+    "userId": 7755640650,
+    "platform": "avito",
+    "lastProductId": "7447879644",
+    "queryId": "9bdc236c-011d-495f-9bd6-1601947e0fd6"
+  },
+  {
+    "lastPublishTime": 1772017864308,
+    "userId": 6937423668,
+    "platform": "goofish",
+    "lastProductId": "1025770896855",
+    "queryId": "c68f8a67-394c-4085-9071-5e6a71280880"
+  },
+  {
+    "lastPublishTime": 1772381591182,
+    "userId": 1080595280,
+    "platform": "goofish",
+    "lastProductId": "1026546001779",
+    "queryId": "aae7e83b-7785-4930-8d99-a806493a4fa0"
+  },
+  {
+    "lastPublishTime": 1772234863604,
+    "userId": 5328022266,
+    "platform": "avito",
+    "lastProductId": "7733157755",
+    "queryId": "cbeb1a11-0283-4a85-990a-3b509dcc398c"
+  },
+  {
+    "lastPublishTime": 1772315090059,
+    "userId": 7755640650,
+    "platform": "avito",
+    "lastProductId": "7892083142",
+    "queryId": "102bb320-16b6-4089-b24a-4305fb0847e3"
+  },
+  {
+    "lastPublishTime": 1772380370538,
+    "userId": 1080595280,
+    "platform": "goofish",
+    "lastProductId": "1024962107586",
+    "queryId": "c249ee28-b806-4aff-90fb-8c75768bf29d"
+  },
+  {
+    "lastPublishTime": 1772211198684,
+    "userId": 7755640650,
+    "platform": "avito",
+    "lastProductId": "7928277482",
+    "queryId": "7394da94-7586-49df-915d-db7aec50e9e3"
+  },
+  {
+    "lastPublishTime": 1771995696166,
+    "userId": 6937423668,
+    "platform": "avito",
+    "lastProductId": "7892175337",
+    "queryId": "c68f8a67-394c-4085-9071-5e6a71280880"
+  },
+  {
+    "lastPublishTime": 1771961440020,
+    "userId": 1080595280,
+    "platform": "avito",
+    "lastProductId": "7846393054",
+    "queryId": "1c90c414-c19e-4c21-9c3d-92b38826f2d6"
+  },
+  {
+    "lastPublishTime": 1771942080711,
+    "userId": 6937423668,
+    "platform": "goofish",
+    "lastProductId": "1023012091228",
+    "queryId": "a6a46848-e363-4073-aa22-532e10b2e395"
+  },
+  {
+    "lastPublishTime": 1772319486157,
+    "userId": 1080595280,
+    "platform": "avito",
+    "lastProductId": "7928166420",
+    "queryId": "21e4c8d1-1ac8-4f1a-b56f-8bbbdc788010"
+  },
+  {
+    "lastPublishTime": 1771995629469,
+    "userId": 6937423668,
+    "platform": "avito",
+    "lastProductId": "7846393054",
+    "queryId": "3031eee0-df02-4787-bac9-d1a2dd76c711"
+  },
+  {
+    "lastPublishTime": 1772017862333,
+    "userId": 6937423668,
+    "platform": "goofish",
+    "lastProductId": "1024080450003",
+    "queryId": "393a5d15-dbdb-40bb-a505-f21181bafb9d"
+  },
+  {
+    "lastPublishTime": 1772398253399,
+    "userId": 1080595280,
+    "platform": "mercari",
+    "lastProductId": "m29519202379",
+    "queryId": "c249ee28-b806-4aff-90fb-8c75768bf29d"
+  },
+  {
+    "lastPublishTime": 1772380435417,
+    "userId": 1080595280,
+    "platform": "mercari",
+    "lastProductId": "m46735607020",
+    "queryId": "04fbb1d6-4641-4434-9d78-92068083f19a"
   },
   {
     "lastPublishTime": 1771942137644,
@@ -49,11 +462,18 @@
     "queryId": "3c93c067-4893-4c0e-99bf-0d17015b1392"
   },
   {
-    "lastPublishTime": 1771942684724,
+    "lastPublishTime": 1771961478415,
     "userId": 1080595280,
     "platform": "mercari",
-    "lastProductId": "m37286273444",
+    "lastProductId": "m26182688669",
     "queryId": "1c90c414-c19e-4c21-9c3d-92b38826f2d6"
+  },
+  {
+    "lastPublishTime": 1771963234859,
+    "userId": 1080595280,
+    "platform": "mercari",
+    "lastProductId": "2JMcXXxoUU3yqeLMbsShbZ",
+    "queryId": "2ee04b65-9512-4be9-bb09-edf63b377c22"
   },
   {
     "lastPublishTime": 1771940402067,
@@ -63,18 +483,32 @@
     "queryId": "f4c9ec34-5a00-4771-945e-f788d9ccd25d"
   },
   {
-    "lastPublishTime": 1771942080510,
+    "lastPublishTime": 1772015002850,
     "userId": 6937423668,
-    "platform": "goofish",
-    "lastProductId": "1023665030492",
-    "queryId": "661eacac-107a-4947-84a6-f8dd440fbfcc"
+    "platform": "mercari",
+    "lastProductId": "2JMe2b27aPUCBf4KjX8xYo",
+    "queryId": "3031eee0-df02-4787-bac9-d1a2dd76c711"
   },
   {
-    "lastPublishTime": 1771942684011,
-    "userId": 1080595280,
-    "platform": "goofish",
-    "lastProductId": "1024565277383",
-    "queryId": "ed07e846-196c-46cc-bf42-616cbfa9e6ad"
+    "lastPublishTime": 1772113812418,
+    "userId": 5328022266,
+    "platform": "avito",
+    "lastProductId": "4309060242",
+    "queryId": "74c84af4-02fc-496d-beaf-f4e9734d8671"
+  },
+  {
+    "lastPublishTime": 1772211016871,
+    "userId": 7755640650,
+    "platform": "avito",
+    "lastProductId": "7783079337",
+    "queryId": "ae79b516-544f-4cfc-8714-a0476c189db5"
+  },
+  {
+    "lastPublishTime": 1772283981118,
+    "userId": 7755640650,
+    "platform": "avito",
+    "lastProductId": "7878138926",
+    "queryId": "fafcddf5-98ab-45be-8d17-5c5d324f2596"
   },
   {
     "lastPublishTime": 1771940262362,
@@ -91,6 +525,27 @@
     "queryId": "5b8ed558-2d06-4fc1-a587-81fb96e8d7e4"
   },
   {
+    "lastPublishTime": 1771963033300,
+    "userId": 1080595280,
+    "platform": "goofish",
+    "lastProductId": "1025497348871",
+    "queryId": "2ee04b65-9512-4be9-bb09-edf63b377c22"
+  },
+  {
+    "lastPublishTime": 1772012246276,
+    "userId": 6937423668,
+    "platform": "mercari",
+    "lastProductId": "2JMdwc5MzSgPDfudy3EWSg",
+    "queryId": "393a5d15-dbdb-40bb-a505-f21181bafb9d"
+  },
+  {
+    "lastPublishTime": 1772314891001,
+    "userId": 7755640650,
+    "platform": "avito",
+    "lastProductId": "7756371285",
+    "queryId": "e3e07671-be07-4d9a-bf08-9041ddef48f3"
+  },
+  {
     "lastPublishTime": 1771942631371,
     "userId": 1080595280,
     "platform": "mercari",
@@ -98,24 +553,24 @@
     "queryId": "f4c9ec34-5a00-4771-945e-f788d9ccd25d"
   },
   {
-    "lastPublishTime": 1771940417509,
+    "lastPublishTime": 1772315181323,
     "userId": 1080595280,
     "platform": "avito",
-    "lastProductId": "7860413272",
-    "queryId": "3c93c067-4893-4c0e-99bf-0d17015b1392"
+    "lastProductId": "7892083142",
+    "queryId": "3f36ab2f-318c-4d00-a339-9018368a5a59"
   },
   {
-    "lastPublishTime": 1771942564280,
+    "lastPublishTime": 1772211231561,
+    "userId": 7755640650,
+    "platform": "avito",
+    "lastProductId": "7570922423",
+    "queryId": "b0e056e2-6558-49bc-bed2-16ff8300a921"
+  },
+  {
+    "lastPublishTime": 1772380377436,
     "userId": 1080595280,
-    "platform": "mercari",
-    "lastProductId": "m44270475074",
-    "queryId": "d7aff394-107a-41e4-adb9-14cc1992187c"
-  },
-  {
-    "lastPublishTime": 1771942080711,
-    "userId": 6937423668,
     "platform": "goofish",
-    "lastProductId": "1023012091228",
-    "queryId": "a6a46848-e363-4073-aa22-532e10b2e395"
+    "lastProductId": "1025627054693",
+    "queryId": "21e4c8d1-1ac8-4f1a-b56f-8bbbdc788010"
   }
 ]

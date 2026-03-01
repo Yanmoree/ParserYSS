@@ -6,8 +6,12 @@
     "lastActive": "2026-02-23T15:44:04.252605",
     "isAdmin": false,
     "userId": 6937423668,
-    "username": "user_6937423668",
-    "allowedPlatforms": ["goofish"]
+    "username": "@parser_pay",
+    "allowedPlatforms": [
+      "avito",
+      "goofish",
+      "mercari"
+    ]
   },
   {
     "createdAt": "2026-02-23T14:55:04.897281",
@@ -18,5 +22,33 @@
     "userId": 1080595280,
     "username": "@yanmore",
     "allowedPlatforms": []
+  },
+  {
+    "createdAt": "2026-02-24T22:49:17.422737260",
+    "subscriptionExpiry": "",
+    "hasLifetimeSubscription": true,
+    "lastActive": "2026-02-24T22:49:17.422773499",
+    "isAdmin": false,
+    "userId": 5328022266,
+    "username": "@ubernshles",
+    "allowedPlatforms": [
+      "avito",
+      "goofish",
+      "mercari"
+    ]
+  },
+  {
+    "createdAt": "2026-02-24T23:01:30.468221727",
+    "subscriptionExpiry": "",
+    "hasLifetimeSubscription": true,
+    "lastActive": "2026-02-24T23:01:30.468246564",
+    "isAdmin": false,
+    "userId": 7755640650,
+    "username": "@YungLe1",
+    "allowedPlatforms": [
+      "avito",
+      "goofish",
+      "mercari"
+    ]
   }
 ]

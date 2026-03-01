@@ -7,7 +7,7 @@
     "goofish",
     "mercari"
   ],
-  "maxPrice": 30000,
+  "maxPrice": 300000,
   "userId": 1080595280,
   "checkIntervalSeconds": 25
 }
