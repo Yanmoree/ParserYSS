@@ -36,6 +36,9 @@ public class ParserManager {
     // Планировщик для периодического парсинга
     private final ScheduledExecutorService scheduler;
     
+    // Блокировки для каждой платформы (чтобы запросы разных пользователей шли последовательно)
+    private final Map<String, Object> platformLocks;
+    
     // Callback для отправки найденных товаров
     private Consumer<ParsingResult> resultCallback;
     
@@ -57,6 +60,7 @@ public class ParserManager {
         this.scheduler = Executors.newScheduledThreadPool(schedulerThreads);
         
         this.activeParsingTasks = new ConcurrentHashMap<>();
+        this.platformLocks = new ConcurrentHashMap<>();
         
         logger.info("✅ ParserManager инициализирован ({} потоков)", threads);
     }
@@ -143,7 +147,7 @@ public class ParserManager {
             
             // Запускаем независимый цикл для платформы
             ScheduledFuture<?> task = scheduler.scheduleWithFixedDelay(
-                () -> runPlatformParsingCycle(userId, platform, parser, queries, settings),
+                () -> runPlatformParsingCycleWithLock(userId, platform, parser, queries, settings),
                 0,
                 intervalSeconds,
                 TimeUnit.SECONDS
@@ -223,6 +227,20 @@ public class ParserManager {
     }
     
 
+    
+    /**
+     * Выполнить один цикл парсинга с блокировкой по платформе
+     * (чтобы запросы разных пользователей к одной платформе шли последовательно)
+     */
+    private void runPlatformParsingCycleWithLock(long userId, String platform, SiteParser parser, List<Query> queries, UserSettings settings) {
+        // Получаем или создаем блокировку для платформы
+        Object lock = platformLocks.computeIfAbsent(platform, k -> new Object());
+        
+        // Блокируем выполнение для этой платформы
+        synchronized (lock) {
+            runPlatformParsingCycle(userId, platform, parser, queries, settings);
+        }
+    }
     
     /**
      * Выполнить один цикл парсинга для ОДНОЙ платформы
