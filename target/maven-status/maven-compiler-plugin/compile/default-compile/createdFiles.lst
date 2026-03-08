@@ -1,8 +1,8 @@
 com/parseryss/bot/handlers/SettingsHandler.class
 com/parseryss/service/SeleniumCookieFetcher.class
 com/parseryss/parser/ParserFactory.class
-com/parseryss/parser/AvitoApiParser.class
 com/parseryss/model/Product.class
+com/parseryss/parser/AvitoApiParser.class
 com/parseryss/model/UserSettings.class
 com/parseryss/service/CookieService.class
 com/parseryss/bot/handlers/CallbackHandler.class
@@ -11,8 +11,8 @@ com/parseryss/bot/keyboards/AdminKeyboard.class
 com/parseryss/service/TwoCaptchaService.class
 com/parseryss/bot/keyboards/MainKeyboard.class
 com/parseryss/model/User.class
-com/parseryss/service/AvitoHeaderService.class
 com/parseryss/service/ParserManager.class
+com/parseryss/service/AvitoHeaderService.class
 com/parseryss/model/Query.class
 com/parseryss/parser/SiteParser.class
 com/parseryss/storage/QueryRepository.class
@@ -20,8 +20,8 @@ com/parseryss/bot/handlers/StartCommandHandler.class
 com/parseryss/bot/keyboards/QueryKeyboard.class
 com/parseryss/util/HttpUtils.class
 com/parseryss/model/ParserState.class
-com/parseryss/storage/ParserStateRepository.class
 com/parseryss/bot/TelegramBotService.class
+com/parseryss/storage/ParserStateRepository.class
 com/parseryss/parser/MercariParser.class
 com/parseryss/config/CookieConfig.class
 com/parseryss/service/ParserManager$ProductCallback.class
@@ -32,10 +32,10 @@ com/parseryss/config/Config.class
 com/parseryss/storage/UserRepository.class
 com/parseryss/Main.class
 com/parseryss/bot/TelegramBotService$1.class
-com/parseryss/service/ParserManager$ParsingResult.class
 com/parseryss/service/MercariHeaderService.class
-com/parseryss/parser/GoofishParser.class
+com/parseryss/service/ParserManager$ParsingResult.class
 com/parseryss/storage/UserSettingsRepository.class
+com/parseryss/parser/GoofishParser.class
 com/parseryss/bot/UserState$State.class
 com/parseryss/bot/UserState.class
 com/parseryss/parser/BaseParser.class
